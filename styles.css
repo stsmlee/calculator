@@ -14,10 +14,10 @@
     align-items: stretch;
 }
 
-.number, .operator, #display {
+.number, .operator, #display, .selected, .clear{
     display:flex;
     flex-grow: 1;
-    background-color: rgb(181, 181, 248);
+    background-color: rgb(208, 208, 227);
     align-items: center;
     justify-content: center;
     font-size: 2em;
@@ -36,4 +36,8 @@
     padding: 0px 20px;
     box-sizing: border-box;
     font-size: 2.7em;
+}
+
+.selected {
+    background-color: #efcef7;
 }
