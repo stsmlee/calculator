@@ -72,13 +72,18 @@ function calculate(n1, n2, op) {
     n2 = +n2;
     switch(op) {
         case 'add':
-            return Math.round((n1 + n2) * 100 ) / 100;
+            return Math.round((n1 + n2) * 100000) / 100000;
         case 'subtract':
-            return Math.round((n1 - n2)*100) / 100;
+            return Math.round((n1 - n2)* 100000) / 100000;
         case 'divide':
-            return Math.round(n1 / n2 * 100) / 100;
+            if (n2 == 0) {
+                clearAll();
+                display.textContent = 'WTF U DOING?';
+                break;
+            };
+            return Math.round(n1 / n2 * 100000) / 100000;
         case 'multiply':
-            return Math.round(n1 * n2 * 100) / 100;
+            return Math.round(n1 * n2 * 100000) / 100000;
     };
 };
 
@@ -94,16 +99,3 @@ function clearAll() {
 
 
 
-// else if (!lastNum) {
-//     lastNum=currentNum;
-//     display.textContent += btn.textContent;
-//     currentOperator = btn.id;
-//     currentNum = 0;
-//     gotDecimal = false;
-// } else {
-//     const result = calculate(lastNum,currentNum,currentOperator);
-//     display.textContent = result;
-//     lastNum = 0;
-//     currentNum = result;
-//     gotDecimal = false;
-// };
