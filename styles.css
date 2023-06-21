@@ -16,7 +16,7 @@
     align-items: stretch; 
 }
 
-.number, .operator, #display, .selected, .clear{
+.number, .operator, #display, .selected, .clear {
     display:flex;
     flex-grow: 1;
     background-color: rgb(208, 208, 227);
@@ -26,17 +26,27 @@
     flex-basis: 0;
 }
 
+.operator {
+    background-color: #cbcaf7;
+}
+
+.clear {
+    background-color: #c9b5ff;
+}
+
+.clear:active {
+    background-color: #bf99ff;
+}
+
 #display {
     flex-direction: column;
     flex-wrap: wrap;
     align-items: flex-end;
     overflow: scroll;
-
     /* display: block;
     text-align: end;
     line-height: 80px;
     overflow-x: auto; */
-
     flex-basis: auto;
     width: 315px;
     border-bottom: 2px solid black;
@@ -47,5 +57,5 @@
 }
 
 .selected {
-    background-color: #efcef7;
+    background-color: #d1b5ff;
 }
