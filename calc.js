@@ -15,12 +15,15 @@ buttons.forEach((btn) => {
             if (lastNum && currentNum) {
                 if (currentOperator) document.getElementById(currentOperator).classList.toggle("selected");
                 let res = calculate(lastNum, currentNum, currentOperator);
-                currentNum = 0;
-                lastNum = res;
-                if (btn.id != 'equals') {
-                    currentOperator = btn.id;
-                    document.getElementById(currentOperator).classList.toggle('selected');
-                } else currentOperator = 0;
+                currentNum = '';
+                lastNum = res.toString();
+                // lastNum = res;
+                currentOperator = btn.id;
+                document.getElementById(currentOperator).classList.toggle('selected');
+                // if (btn.id != 'equals') {
+                //     currentOperator = btn.id;
+                //     document.getElementById(currentOperator).classList.toggle('selected');
+                // } else currentOperator = 0;
                 gotDecimal = false;
                 display.textContent = res;
                 console.log('res:',res, 'current:', currentNum, 'last:', lastNum);
@@ -30,9 +33,9 @@ buttons.forEach((btn) => {
                 currentOperator = btn.id;
                 console.log(currentOperator);
                 lastNum = currentNum;
-                currentNum = 0;
+                currentNum = '';
                 gotDecimal = false;
-            } else if (lastNum) {
+            } else if (lastNum.toString()) {
                 if (currentOperator) document.getElementById(currentOperator).classList.toggle("selected");
                 btn.classList.toggle("selected");
                 currentOperator = btn.id;
@@ -45,16 +48,18 @@ buttons.forEach((btn) => {
                     clearAll();
                     break;
                 case 'clear-entry':
-                    currentNum = 0;
-                    display.textContent = 0;
+                    currentNum = '';
+                    display.textContent = '';
             };
         };
     });
 });
 
 function updateDisplay(n) {
+    if (currentOperator == 'equals' && !currentNum) clearAll();
     if (n == '.') {
-        if (!gotDecimal && currentNum) {
+        if (!gotDecimal) {
+            if (!currentNum) currentNum += 0;
             currentNum += '.';
             display.textContent = currentNum;
             gotDecimal = true;
