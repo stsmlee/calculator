@@ -26,7 +26,6 @@ buttons.forEach((btn) => {
                 if (currentOperator) document.getElementById(currentOperator).classList.toggle("selected");
                 btn.classList.toggle("selected");
                 currentOperator = btn.id;
-                console.log(currentOperator);
                 lastNum = currentNum;
                 currentNum = '';
                 gotDecimal = false;
@@ -34,7 +33,6 @@ buttons.forEach((btn) => {
                 if (currentOperator) document.getElementById(currentOperator).classList.toggle("selected");
                 btn.classList.toggle("selected");
                 currentOperator = btn.id;
-                console.log(currentOperator);
                 gotDecimal = false;
             };
         } else if (btn.className == 'clear') {
@@ -77,6 +75,7 @@ function calculate(n1, n2, op) {
             return Math.round((n1 - n2)* 100000) / 100000;
         case 'divide':
             if (n2 == 0) {
+                document.getElementById(currentOperator).classList.toggle('selected');
                 clearAll();
                 display.textContent = 'WTF U DOING?';
                 break;
